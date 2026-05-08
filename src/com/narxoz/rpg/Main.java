@@ -1,20 +1,31 @@
 package com.narxoz.rpg;
 
-/**
- * Entry point for Homework 9 — Chronomancer's Vault: Visitor + Memento.
- *
- * The scaffold prints the banner only; students fill in the vault demo.
- */
+import com.narxoz.rpg.combatant.Hero;
+import com.narxoz.rpg.vault.ChronomancerEngine;
+import com.narxoz.rpg.vault.VaultRunResult;
+import java.util.List;
+
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("=== Homework 9 Demo: Visitor + Memento ===");
+        Hero warrior = new Hero("Thorin Ironfist", 150, 45, 30);
+        warrior.addGold(450);
 
-        // 1. Create at least 2 heroes with different starting states.
-        // 2. Build an artifact inventory and exercise the visitor interface.
-        // 3. Capture a hero snapshot through the memento workflow.
-        // 4. Rewind the hero after a vault trap changes state.
-        // 5. Run the ChronomancerEngine demo sequence.
-        // 6. Print a final VaultRunResult summary.
+        Hero mage = new Hero("Lirael Stormweaver", 90, 85, 22, 15, 720, null);
+
+        System.out.println("\nHeroes entering the vault:");
+        System.out.println("   • " + warrior.getName() + " (HP: " + warrior.getHp() + ")");
+        System.out.println("   • " + mage.getName() + " (HP: " + mage.getHp() + ")");
+
+
+        ChronomancerEngine engine = new ChronomancerEngine();
+        System.out.println("\nStarting vault expedition...\n");
+
+        VaultRunResult result = engine.runVault(List.of(warrior, mage));
+
+
+        System.out.println("\n" + result);
+
     }
 }

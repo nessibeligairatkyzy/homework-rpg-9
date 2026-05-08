@@ -1,8 +1,5 @@
 package com.narxoz.rpg.artifact;
 
-/**
- * A melee or ranged weapon found in the vault.
- */
 public class Weapon extends Artifact {
 
     private final int attackBonus;
